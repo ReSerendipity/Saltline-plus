@@ -99,6 +99,12 @@ python -m http.server 8766
 
 也可以直接用浏览器打开 `dist/Saltline.html`。
 
+## 桌面窗口（Windows）
+
+双击 `play-windows.cmd`：用本机 Chrome 的 `--app` 模式打开无标签页、无地址栏的独立窗口（避免 Edge 鼠标手势；未安装 Chrome 时回退默认浏览器）。
+
+需要真正的独立 `.exe`（不依赖本机浏览器）时，可继续用 Electron / Tauri 打包；当前仓库暂未包含桌面安装包。
+
 可选：校验原始单文件未被改动（原文件不在仓库内）：
 
 ```powershell
