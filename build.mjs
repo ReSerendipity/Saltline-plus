@@ -34,7 +34,7 @@ const gadgets = gadgetFiles.map(read).join("\n;\n");
 // 道具与首页公告 i18n：多份 JSON 按语言浅合并为一份字典（en = 键名本身，不需要词条），
 // 以 I18N.D 增量补齐的方式追加在 i18n-runtime 脚本之后。
 const gadgetI18n = {};
-for (const f of ["src/i18n/emp.json", "src/i18n/smoke.json", "src/i18n/support.json", "src/i18n/announce.json"]) {
+for (const f of ["src/i18n/emp.json", "src/i18n/smoke.json", "src/i18n/support.json", "src/i18n/announce.json", "src/i18n/controls.json"]) {
   const data = JSON.parse(read(f));
   for (const lang of Object.keys(data)) {
     if (!gadgetI18n[lang]) gadgetI18n[lang] = {};

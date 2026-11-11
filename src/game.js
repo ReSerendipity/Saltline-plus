@@ -20719,6 +20719,7 @@ var h_ = {
     KeyE: "interact",
     KeyF: "melee",
     KeyV: "melee",
+    KeyZ: "aimToggle",
     Escape: "pause",
     KeyP: "pause",
     KeyQ: "alt",
@@ -20771,6 +20772,7 @@ function v_(i) {
       },
       fire: !1,
       ads: !1,
+      adsLatch: !1,
       sprint: !1,
       crouch: !1,
       locked: !1,
@@ -20828,7 +20830,7 @@ function v_(i) {
 
   function v() {
     for (let P in o) o[P].clear();
-    n.clear(), u = 0, j = !1, M && (M.btn.ads.classList.remove("active"), ie(), q = -1, D = -1)
+    n.clear(), u = 0, j = !1, f.adsLatch = !1, prevAimToggle = !1, M && (M.btn.ads.classList.remove("active"), ie(), q = -1, D = -1)
   }
   addEventListener("keydown", P => {
     let V = h_[P.code];
@@ -20876,7 +20878,8 @@ function v_(i) {
   }), document.addEventListener("pointerlockerror", () => m());
   let x = .5,
     y = .5,
-    b = !1;
+    b = !1,
+    prevAimToggle = !1;
   document.addEventListener("mouseleave", () => {
     b = !1
   });
@@ -21087,7 +21090,10 @@ function v_(i) {
         oe = (n.has("turnD") ? 1 : 0) - (n.has("turnU") ? 1 : 0);
       J && (f.look.dx += J * p_ * P), oe && (f.look.dy += oe * p_ * .6 * P)
     }
-    f.move.x = V, f.move.y = Y, f.fire = r && n.has("fire"), f.ads = r && (n.has("ads") || j), f.sprint = r && L, f.crouch = r && n.has("crouch")
+    f.move.x = V, f.move.y = Y;
+    let aimToggle = r && n.has("aimToggle");
+    aimToggle && !prevAimToggle && (f.adsLatch = !f.adsLatch), prevAimToggle = aimToggle;
+    f.fire = r && n.has("fire"), f.ads = r && (n.has("ads") || n.has("ads2") || j || f.adsLatch), f.sprint = r && L, f.crouch = r && n.has("crouch")
   }
 
   function B() {
@@ -26338,7 +26344,7 @@ function pM(i, e) {
       </div>
       <aside class="m-legend" aria-label="Controls at a glance">
         <div><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move</span><span><kbd>Mouse</kbd> Look</span><span><kbd>LMB</kbd> Fire</span><span><kbd>RMB</kbd> Aim</span><span><kbd>R</kbd> Reload</span></div>
-        <div><span><kbd>E</kbd> Cut relay</span><span><kbd>Space</kbd> Jump</span><span><kbd>Shift</kbd> Sprint</span><span><kbd>C</kbd> Crouch</span><span><kbd>Esc</kbd> Pause</span></div>
+        <div><span><kbd>E</kbd> Cut relay</span><span><kbd>Space</kbd> Jump</span><span><kbd>Shift</kbd> Sprint</span><span><kbd>C</kbd> Crouch</span><span><kbd>Z</kbd> Toggle aim</span><span><kbd>Esc</kbd> Pause</span></div>
         <div class="lg-touch"><em>Touch</em><span>Left thumb moves</span><span>Right thumb looks</span><span>Fire \xB7 Aim \xB7 Reload \xB7 Jump on screen</span></div>
       </aside>
     </section>
