@@ -3,7 +3,8 @@
 《Saltline / 盐线》的非官方增强版：在保留原作单文件玩法的基础上，增加了玩家道具、敌人变体、固定炮塔与副武器。
 
 **原版游戏（原作者）**：<https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp>  
-**本仓库**：<https://github.com/ReSerendipity/Saltline-plus>
+**本仓库**：<https://github.com/ReSerendipity/Saltline-plus>  
+**在线游玩（GitHub Pages）**：<https://reserendipity.github.io/Saltline-plus/>
 
 > 本仓库是原作的**非官方改版**，与原作者无隶属关系。原作的代码、素材、商标及其他权利归原作者所有。
 >
