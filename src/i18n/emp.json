@@ -1,0 +1,14 @@
+{
+  "zh": {
+    "EMP": "EMP 脉冲雷",
+    "EMP pulse — {0} stunned": "EMP 脉冲 —— 眩晕 {0} 台机械"
+  },
+  "ja": {
+    "EMP": "EMP パルス",
+    "EMP pulse — {0} stunned": "EMP パルス — 機械 {0} 体をスタン"
+  },
+  "ko": {
+    "EMP": "EMP 펄스",
+    "EMP pulse — {0} stunned": "EMP 펄스 — 기계 {0}기 마비"
+  }
+}

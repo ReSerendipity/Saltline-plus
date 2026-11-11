@@ -1,0 +1,35 @@
+{
+  "zh": {
+    "Decoy": "诱饵信标",
+    "8s": "8 秒诱饵 · 周期吸引",
+    "Ammo Box": "弹药箱",
+    "Stim": "医疗针",
+    "Gadget": "道具",
+    "not wired in this build": "本版本尚未实装",
+    "No charges left": "没有剩余次数",
+    "Cooling down": "冷却中",
+    "1/2/3 select · Q use": "1/2/3 选择 · Q 使用"
+  },
+  "ja": {
+    "Decoy": "デコイビーコン",
+    "8s": "8秒デコイ · 周期的誘引",
+    "Ammo Box": "弾薬箱",
+    "Stim": "スティム",
+    "Gadget": "ガジェット",
+    "not wired in this build": "このビルドでは未実装",
+    "No charges left": "残り回数がない",
+    "Cooling down": "クールダウン中",
+    "1/2/3 select · Q use": "1/2/3 選択 · Q 使用"
+  },
+  "ko": {
+    "Decoy": "미끼 비컨",
+    "8s": "8초 미끼 · 주기 유인",
+    "Ammo Box": "탄약 상자",
+    "Stim": "회복 주사",
+    "Gadget": "장비",
+    "not wired in this build": "이 빌드에서는 아직 미구현",
+    "No charges left": "잔여 횟수 없음",
+    "Cooling down": "재사용 대기 중",
+    "1/2/3 select · Q use": "1/2/3 선택 · Q 사용"
+  }
+}
