@@ -14,19 +14,19 @@
 
 ## 截图
 
-截图通过 jsDelivr 镜像加载，国内网络可直接预览；原图在 `docs/screenshots/`。
+截图通过 ghproxy.net 镜像加载，国内网络可直接预览；原图在 `docs/screenshots/`。若镜像不可用，可改用 `gh-proxy.com` 前缀或直接查看仓库内原图。
 
 ### 标题界面（含原作者地址与免责声明）
 
-![标题界面](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/title.jpg)
+![标题界面](https://ghproxy.net/https://raw.githubusercontent.com/ReSerendipity/Saltline-plus/main/docs/screenshots/title.jpg)
 
 ### 固定炮塔（货场）
 
-![固定炮塔](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/turret.jpg)
+![固定炮塔](https://ghproxy.net/https://raw.githubusercontent.com/ReSerendipity/Saltline-plus/main/docs/screenshots/turret.jpg)
 
 ### BREACH-12 副武器
 
-![BREACH-12 副武器](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/breach-12.jpg)
+![BREACH-12 副武器](https://ghproxy.net/https://raw.githubusercontent.com/ReSerendipity/Saltline-plus/main/docs/screenshots/breach-12.jpg)
 
 ---
 
