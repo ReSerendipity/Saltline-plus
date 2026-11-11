@@ -12,6 +12,24 @@
 
 ---
 
+## 截图
+
+截图通过 jsDelivr 镜像加载，国内网络可直接预览；原图在 `docs/screenshots/`。
+
+### 标题界面（含原作者地址与免责声明）
+
+![标题界面](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/title.jpg)
+
+### 固定炮塔（货场）
+
+![固定炮塔](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/turret.jpg)
+
+### BREACH-12 副武器
+
+![BREACH-12 副武器](https://cdn.jsdelivr.net/gh/ReSerendipity/Saltline-plus@main/docs/screenshots/breach-12.jpg)
+
+---
+
 ## 相较于原版增加的内容
 
 ### 1. 玩家工具层
