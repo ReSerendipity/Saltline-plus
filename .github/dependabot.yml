@@ -1,0 +1,85 @@
+# 模板：governance/templates/dependabot.template.yml
+# 用法：复制为 <repo>/.github/dependabot.yml，按实际 manifest 启用对应生态段。
+# 口径（§12.5 + §19）：
+#   - cooldown.default-days 不得低于 7（防投毒窗口；安全补丁不受冷却影响）
+#   - minor/patch 合并为单个 PR；major 各自单开，逐个评审
+#   - open-pull-requests-limit ≤ 5，避免一次性铺开挤占 Actions 并发
+#   - 锁内配对依赖（pydantic ↔ pydantic-core、torch ↔ torchvision、omegaconf ↔ antlr4）必须成对 ignore，
+#     改走「手工重算锁 + 整组升级」；拆开升必产生不可解锁
+#
+# 私有仓说明：本文件默认不生成。私有仓 allow_auto_merge=false（§19.2 平台缺口），
+# 但 dependabot 的价值在「发现漏洞版本」而非自动合并——是否放弃须在
+# GOVERNANCE-EXCLUSIONS.md §十一 显式登记，不得沉默跳过。
+
+version: 2
+updates:
+  # ── GitHub Actions（所有仓必有）──
+  # 注意：github-actions 生态的 cooldown 只支持 default-days；
+  #       写 semver-major-days / semver-minor-days / semver-patch-days 会被判配置非法。
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    groups:
+      minor-and-patch:
+        applies-to: version-updates
+        update-types: [minor, patch]
+        patterns: ["*"]
+
+  # ── 以下生态按实际 manifest 启用，不需要的整段删除 ──
+  #
+  # - package-ecosystem: pip
+  #   directory: "/"
+  #   schedule:
+  #     interval: monthly
+  #   cooldown:
+  #     default-days: 7
+  #     semver-major-days: 30
+  #     semver-minor-days: 7
+  #     semver-patch-days: 3
+  #   open-pull-requests-limit: 5
+  #   labels: [dependencies]
+  #   groups:
+  #     minority:        # 按依赖族拆分，避免 blanket 分组把互有强约束的包卷进同一次升级
+  #       applies-to: version-updates
+  #       update-types: [minor, patch]
+  #       patterns: ["*"]
+  #   ignore:
+  #     - dependency-name: "pydantic-core"   # 与 pydantic 成对，见文件头
+  #     - dependency-name: "pydantic"
+  #
+  # - package-ecosystem: npm
+  #   directory: "/"
+  #   schedule:
+  #     interval: monthly
+  #   cooldown:
+  #     default-days: 7
+  #   open-pull-requests-limit: 5
+  #   labels: [dependencies]
+  #   groups:
+  #     minor-and-patch:
+  #       applies-to: version-updates
+  #       update-types: [minor, patch]
+  #       patterns: ["*"]
+  #
+  # - package-ecosystem: cargo
+  #   directory: "/src-tauri"
+  #   schedule:
+  #     interval: monthly
+  #   open-pull-requests-limit: 5
+  #   ignore:
+  #     - dependency-name: "*"
+  #       update-types: ["version-update:semver-major"]
+  #
+  # - package-ecosystem: gradle
+  #   directory: "/"
+  #   schedule:
+  #     interval: monthly
+  #   open-pull-requests-limit: 5
+  #   ignore:
+  #     - dependency-name: "*"
+  #       update-types: ["version-update:semver-major"]

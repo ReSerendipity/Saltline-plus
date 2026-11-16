@@ -1,0 +1,52 @@
+name: Governance Gates
+
+# 家族治理门禁最小载体（§20.1 / 2026-11-17 接入批次）：workflow lint + YAML 解析。
+# ruleset governance-baseline 的 required_status_checks 上下文 = 本 job 名 "gates"。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gates-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Install actionlint v1.7.12 (pinned + SHA256)
+        env:
+          ACTIONLINT_VERSION: 1.7.12
+        run: |
+          curl --fail --location --silent --show-error \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz" \
+            --output actionlint.tar.gz
+          echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  actionlint.tar.gz" \
+            | sha256sum --check --strict -
+          tar -xzf actionlint.tar.gz actionlint
+          sudo install -m 0755 actionlint /usr/local/bin/actionlint
+      - name: Lint all workflow files
+        run: actionlint -color .github/workflows/*.yml
+      - name: Validate YAML parses
+        run: |
+          python3 - <<'EOF'
+          import glob, sys, yaml
+          bad = []
+          for f in glob.glob('.github/workflows/*.yml'):
+              try:
+                  yaml.safe_load(open(f, encoding='utf-8'))
+              except Exception as e:
+                  bad.append(f'{f}: {e}')
+          if bad:
+              print('\n'.join(bad), file=sys.stderr)
+              sys.exit(1)
+          print(f'YAML OK ({len(glob.glob(".github/workflows/*.yml"))} files)')
+          EOF

@@ -9,6 +9,8 @@
 > 本仓库是原作的**非官方改版**，与原作者无隶属关系。原作的代码、素材、商标及其他权利归原作者所有。
 >
 > **本仓库未附任何许可证（No license）**，不授予复制、分发、商用或再许可的权利；公开仅为学习与非商业交流。若原作者要求，将立即删除本仓库及构建产物。
+>
+> 治理规范：[ReSerendipity/.github/governance](https://github.com/ReSerendipity/.github/tree/main/governance)
 
 ---
 
